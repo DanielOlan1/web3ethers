@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Crypto CoinGecko</title>
+  <link rel="stylesheet" type="text/css" href="/styles/index.css">
+
+</head>
+<nav>
+  <ul>
+    <li><a href="#">Inicio</a></li>
+    <li><a href="/tokentop/tokentop.html">Top 100 Tokens de Polygon</a></li>
+    <li><a href="/tokenmetrics/tokenmetrics.html">Token Metrics</a></li>  
+  </ul>
+</nav>
+<body>
+
+
+  <h1>INFORMACION DE COINGECKO</h1>
+    <div id="crypto-container">
+      <label for="crypto-dropdown">Selecionar:</label>
+      <select id="crypto-dropdown"></select>
+      <div id="crypto-info"></div>
+      <table id="crypto-table">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Symbol</th>
+            <th>Precio</th>
+            <th>Market Cap</th>
+            <th>Address</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <script src="/index/token.js"></script>
+</body>
+</html>

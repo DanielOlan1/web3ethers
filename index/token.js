@@ -1,9 +1,10 @@
 const dropdown = document.getElementById("crypto-dropdown");
 const tableBody = document.querySelector("#crypto-table tbody");
+
 let cryptoList;
 
 // Obtener la lista de criptomonedas
-fetch("https://api.coingecko.com/api/v3/coins/list")
+fetch("https://api.coingecko.com/api/v3/coins/list", {mode: "cors"})
   .then((response) => response.json())
   .then((data) => {
     cryptoList = data;
@@ -68,3 +69,8 @@ dropdown.addEventListener("change", (event) => {
     })
     .catch((error) => console.error(error));
 });
+
+
+
+
+
