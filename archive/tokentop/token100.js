@@ -1,4 +1,7 @@
-fetch("https://api.coingecko.com/api/v3/coins/list?include_platform=true&per_page=100&order=market_cap_desc", { mode: "cors" })
+fetch(
+  "https://api.coingecko.com/api/v3/coins/list?include_platform=true&per_page=100&order=market_cap_desc",
+  { mode: "cors" }
+)
   .then((response) => response.json())
   .then((data) => {
     const tbody = document.querySelector("#token-table tbody");
@@ -19,7 +22,8 @@ fetch("https://api.coingecko.com/api/v3/coins/list?include_platform=true&per_pag
         copyButton.textContent = "Copy";
         copyButton.addEventListener("click", () => {
           const address = addressTd.getAttribute("data-address");
-          navigator.clipboard.writeText(address)
+          navigator.clipboard
+            .writeText(address)
             .then(() => {
               console.log(`Copied ${address} to clipboard`);
             })
@@ -40,22 +44,21 @@ fetch("https://api.coingecko.com/api/v3/coins/list?include_platform=true&per_pag
   })
   .catch((error) => console.error(error));
 
-  const searchBtn = document.querySelector("#search-btn");
-  const searchInput = document.querySelector("#search-input");
-  
-  searchBtn.addEventListener("click", () => {
-    const query = searchInput.value.toLowerCase();
-    const tokens = document.querySelectorAll("#token-table tbody tr");
-  
-    tokens.forEach((token) => {
-      const name = token.querySelector("td:nth-child(2)").textContent.toLowerCase();
-      if (name.includes(query)) {
-        token.style.display = "";
-      } else {
-        token.style.display = "none";
-      }
-    });
+const searchBtn = document.querySelector("#search-btn");
+const searchInput = document.querySelector("#search-input");
+
+searchBtn.addEventListener("click", () => {
+  const query = searchInput.value.toLowerCase();
+  const tokens = document.querySelectorAll("#token-table tbody tr");
+
+  tokens.forEach((token) => {
+    const name = token
+      .querySelector("td:nth-child(2)")
+      .textContent.toLowerCase();
+    if (name.includes(query)) {
+      token.style.display = "";
+    } else {
+      token.style.display = "none";
+    }
   });
-  
-
-
+});
