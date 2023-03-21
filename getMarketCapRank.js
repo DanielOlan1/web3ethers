@@ -29,7 +29,7 @@ const main = async () => {
       }
     } catch (e) {
       console.log(i, "\nERROR waiting 60 seconds\n");
-      await sleep(60000);
+      await sleep(1);
       // i = i;
     }
   }

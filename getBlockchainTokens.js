@@ -5,11 +5,11 @@ const axios = require("axios");
 const main = async () => {
   // ethereum
   //polygon-pos
-  // arbitrum - one;
+  // arbitrum-one;
   // optimistic - ethereum;
   // avalanche
   // fantom
-  blockchain = "polygon-pos";
+  blockchain = "arbitrum-one";
 
   tokens = [];
   for (let i = 0; i < coinGecko.length; i++) {
@@ -19,7 +19,6 @@ const main = async () => {
         address: coinGecko[i]["platforms"][blockchain],
       };
       tokens.push(obj);
-      // tokens.push(coinGecko[i]["platforms"][blockchain]);
     }
   }
   console.log(tokens);
@@ -29,8 +28,8 @@ const main = async () => {
   //api.coingecko.com/api/v3/coins/polygon-pos/contract/0x9a71012b13ca4d3d0cdc72a177df3ef03b0e76a3
   // const response = await fetch(url);
   tokensA = [];
-  for (let i = 0; i < 3; i++) {
-    // for (let i = 0; i < tokens.length; i++) {
+  // for (let i = 0; i < 3; i++) {
+  for (let i = 0; i < tokens.length; i++) {
     try {
       const url = `https://api.coingecko.com/api/v3/coins/${blockchain}/contract/${tokens[i].address}`;
       const response = await axios.get(url);
