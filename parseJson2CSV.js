@@ -9,4 +9,5 @@ try {
   console.log(csv);
 } catch (err) {
   console.error(err);
+  SaveFile(tokens, + "_Tokens");
 }
