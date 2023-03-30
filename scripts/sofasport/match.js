@@ -19,33 +19,33 @@ const options = {
     const eventos = response.data;
     const evento = eventos.data[0]; // Obtener el primer evento del array
     
-    if (evento) {
-      const idEvento = evento.id; 
-      console.log(`ID del evento: ${idEvento}`);
-    } else {
-      console.log("No se encontraron eventos para la fecha especificada");
-    }
+   //    if (evento) {
+     //    const idEvento = evento.id; 
+     //    console.log(`ID del evento: ${idEvento}`);
+    //   } else {
+     //    console.log("No se encontraron eventos para la fecha especificada");
+     //  }
 
-    if (evento) {
-        const idslug = evento.slug; 
-        console.log(`Slug: ${idslug}`);
-      } else {
-        console.log("No se encontraron eventos para la fecha especificada");
-      }
-
-      if (evento) {
-        const idtournament = evento.winnerCode; 
-        console.log(`WinerCode: ${idtournament}`);
-      } else {
-        console.log("No se encontraron eventos para la fecha especificada");
-      }
+    //   if (evento) {
+       //    const idslug = evento.slug; 
+       //    console.log(`Slug: ${idslug}`);
+     //    } else {
+         //  console.log("No se encontraron eventos para la fecha especificada");
+       //  }
 
       if (evento) {
-        const homescore = evento.homescore; 
-        console.log(`HomeScore: ${homescore}`);
+        const nombreTorneo = evento.tournament.name;
+        console.log(`Nombre del torneo: ${nombreTorneo}`);
       } else {
         console.log("No se encontraron eventos para la fecha especificada");
       }
+
+  //    if (evento) {
+       //    const homescore = evento.homescore; 
+        //   console.log(`HomeScore: ${homescore}`);
+       //  } else {
+        //   console.log("No se encontraron eventos para la fecha especificada");
+       //  }
 
       
   }).catch(function (error) {
