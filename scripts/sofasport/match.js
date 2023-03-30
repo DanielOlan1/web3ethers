@@ -15,23 +15,16 @@ const options = {
       'X-RapidAPI-Host': 'sofasport.p.rapidapi.com'
     }
   };
-  
   axios.request(options).then(function (response) {
     const eventos = response.data;
-  
-    if (eventos && eventos.id) {
-      console.log(`ID: ${eventos.id}`);
-      console.log(`Torneo: ${eventos.tournament.name}`);
-      console.log(`Categoría: ${eventos.tournament.category.name}`);
-      console.log(`Estado: ${eventos.status.type}`);
-      console.log(`Equipo local: ${eventos.homeTeam.name}`);
-      console.log(`Equipo visitante: ${eventos.awayTeam.name}`);
-      console.log(`Marcador: ${eventos.homeScore.current} - ${eventos.awayScore.current}`);
-      console.log(`Hora: ${eventos.time.full}`);
+    const evento = eventos.data[0]; // Obtener el primer evento del array
+    
+    if (evento) {
+      const idEvento = evento.id; 
+      console.log(`ID del evento: ${idEvento}`);
     } else {
       console.log("No se encontraron eventos para la fecha especificada");
-    }  
+    }
   }).catch(function (error) {
     console.error(error);
   });
-  
