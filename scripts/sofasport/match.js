@@ -20,7 +20,14 @@ const options = {
     const eventos = response.data;
   
     if (eventos && eventos.id) {
-      
+      console.log(`ID: ${eventos.id}`);
+      console.log(`Torneo: ${eventos.tournament.name}`);
+      console.log(`Categoría: ${eventos.tournament.category.name}`);
+      console.log(`Estado: ${eventos.status.type}`);
+      console.log(`Equipo local: ${eventos.homeTeam.name}`);
+      console.log(`Equipo visitante: ${eventos.awayTeam.name}`);
+      console.log(`Marcador: ${eventos.homeScore.current} - ${eventos.awayScore.current}`);
+      console.log(`Hora: ${eventos.time.full}`);
     } else {
       console.log("No se encontraron eventos para la fecha especificada");
     }  
