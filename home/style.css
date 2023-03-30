@@ -29,6 +29,8 @@ display: grid;
 grid-template-rows: 100px 1fr;
 }
 
+
+
 .nav{
     --padding-container:0;
     height: 100%;
