@@ -25,6 +25,29 @@ const options = {
     } else {
       console.log("No se encontraron eventos para la fecha especificada");
     }
+
+    if (evento) {
+        const idslug = evento.slug; 
+        console.log(`Slug: ${idslug}`);
+      } else {
+        console.log("No se encontraron eventos para la fecha especificada");
+      }
+
+      if (evento) {
+        const idtournament = evento.winnerCode; 
+        console.log(`WinerCode: ${idtournament}`);
+      } else {
+        console.log("No se encontraron eventos para la fecha especificada");
+      }
+
+      if (evento) {
+        const homescore = evento.homescore; 
+        console.log(`HomeScore: ${homescore}`);
+      } else {
+        console.log("No se encontraron eventos para la fecha especificada");
+      }
+
+      
   }).catch(function (error) {
     console.error(error);
   });
