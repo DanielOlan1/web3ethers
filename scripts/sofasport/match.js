@@ -19,7 +19,7 @@ axios.request(options).then(function (response) {
     const eventos = response.data;
     const evento = eventos.data[0]; // Obtener el primer evento del array
 
-    if (evento) {
+  if (evento) {
 
         const idEvento = evento.id;
         console.log(`ID del evento: ${idEvento}`);
@@ -111,6 +111,8 @@ axios.request(options).then(function (response) {
     } else {
         console.log("It's a tie!");
     }
+
+    console.log(evento);
 }).catch(function (error) {
     console.error(error);
 });
