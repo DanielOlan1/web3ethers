@@ -2,8 +2,8 @@ const axios = require("axios");
 
 const options = {
   method: 'GET',
-  url: 'https://sofasport.p.rapidapi.com/v1/events/data',
-  params: {event_id: '10277254'},
+  url: 'https://sofasport.p.rapidapi.com/v1/events/schedule/live',
+  params: {sport_id: '1'},
   headers: {
     'X-RapidAPI-Key': '2393f87588msh0c8df3b6ecf540dp1cde7cjsn6a9e8302348b',
     'X-RapidAPI-Host': 'sofasport.p.rapidapi.com'

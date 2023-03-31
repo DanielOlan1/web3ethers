@@ -1,14 +1,17 @@
 const axios = require("axios");
-//const hoy = new Date();
-//const dia = hoy.getDate();
-//const mes = hoy.getMonth() + 1; // Los meses en JavaScript se indexan desde 0, por lo que hay que sumar 1
-//const año = hoy.getFullYear();
-//const fechaHoy = `${año}-${mes}-${dia}`; // En este caso, la fecha se está formateando como una cadena en formato 'YYYY-MM-DD'
+const hoy = new Date();
+const dia = hoy.getDate();
+const mes = hoy.getMonth() + 1; // Los meses en JavaScript se indexan desde 0, por lo que hay que sumar 1
+const año = hoy.getFullYear();
+const Hr = hoy.getHours();
+const Mn = hoy.getMinutes();
+const S = hoy.getSeconds();
+const fechaHoy = `${año}-${mes}-${dia}-${Hr}-${Mn}-${S}`; // En este caso, la fecha se está formateando como una cadena en formato 'YYYY-MM-DD'
 
 const options = {
     method: 'GET',
-    url: 'https://sofasport.p.rapidapi.com/v1/events/schedule/category',
-    params: { date: '2023-03-14', category_id: '1' },
+    url: 'https://sofasport.p.rapidapi.com/v1/events/schedule/live',
+    params: { sport_id: '1' },
     headers: {
         'X-RapidAPI-Key': '2393f87588msh0c8df3b6ecf540dp1cde7cjsn6a9e8302348b',
         'X-RapidAPI-Host': 'sofasport.p.rapidapi.com'
@@ -19,7 +22,7 @@ axios.request(options).then(function (response) {
     const eventos = response.data;
     const evento = eventos.data[0]; // Obtener el primer evento del array
 
-  if (evento) {
+    if (evento) {
 
         const idEvento = evento.id;
         console.log(`ID del evento: ${idEvento}`);
@@ -28,19 +31,23 @@ axios.request(options).then(function (response) {
         const idStarTime = evento.startTimestamp;
         const date1 = new Date(idStarTime * 1000);
         const timeString1 = date1.toLocaleString();
-        console.log(`Start time stamp: ${timeString1}`);
+        console.log(`Start Time stamp: ${timeString1}`);
+        if(idStarTime = );
 
-        // TIME convierte la fecha en una cadena con formato de zona horaria local
+        // MIDLE TIME convierte la fecha en una cadena con formato de zona horaria local
         const idTime = evento.time.currentPeriodStartTimestamp;
         const date = new Date(idTime * 1000);
         const timeString = date.toLocaleString();
-        console.log(`Time: ${timeString}`);
+        console.log(`Midle Time: ${timeString}`);
 
+  // FINISH TIME convierte la fecha en una cadena con formato de zona horaria local
         const idTimeChanges = evento.changes.changeTimestamp;
         const date2 = new Date(idTimeChanges * 1000);
         const timeString2 = date2.toLocaleString();
-        console.log(`Change Timestamp: ${timeString2}`);
+        console.log(`Finis Times tamp: ${timeString2}`);
 
+
+       
         //SLUG es el tipo de copa o partido
         // const idslug = evento.slug;
         // console.log(`Slug: ${idslug}`);
@@ -112,7 +119,6 @@ axios.request(options).then(function (response) {
         console.log("It's a tie!");
     }
 
-    console.log(evento);
 }).catch(function (error) {
     console.error(error);
 });
