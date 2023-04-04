@@ -1,21 +1,58 @@
-function mostrarCarta() {
-    // Crear un array con las cartas de lotería
-    const cartas = [
-      "El Gallo", "El Diablito", "La Dama", "El Catrín", "El Paraguas", "La Sirena",
-      "La Escalera", "La Botella", "El Barril", "El Árbol", "El Melón", "El Valiente",
-      "El Gorrito", "La Muerte", "La Pera", "La Bandera", "El Bandolón", "El Violoncello",
-      "La Garza", "El Pájaro", "La Mano", "La Bota", "La Luna", "El Cotorro",
-      "El Borracho", "El Negrito", "El Corazón", "La Sandía", "El Tambor", "El Camarón",
-      "Las Jaras", "El Músico", "La Araña", "El Soldado", "La Estrella", "El Cazo",
-      "El Mundo", "El Apache", "El Nopal", "El Alacrán", "La Rosa", "La Calavera",
-      "La Campana", "El Cantarito", "El Venado", "El Sol", "La Corona", "La Chalupa",
-      "El Pino", "El Pescado", "La Palma", "La Maceta", "El Arpa", "La Rana"
-    ];
+const cartas = [
+    { nombre: "El gallo", imagen: "Cartas-imagenes/gallo.jpg" },
+    { nombre: "El diablito", imagen: "Cartas-imagenes/diablo.jpg" },
+    { nombre: "La dama", imagen: "Cartas-imagenes/dama.jpg" },
+    { nombre: "El catrin", imagen: "Cartas-imagenes/catrin.jpg" },
+    { nombre: "El paraguas", imagen: "Cartas-imagenes/paraguas.jpg" },
+    { nombre: "La sirena", imagen: "Cartas-imagenes/sirena.jpg" },
+    { nombre: "La escalera", imagen: "Cartas-imagenes/escalera.jpg" },
+    { nombre: "La botella", imagen: "Cartas-imagenes/botella.jpg" },
+
+    // y así sucesivamente para cada carta
+  ];
   
-    // Seleccionar una carta al azar
-    const cartaSeleccionada = cartas[Math.floor(Math.random() * cartas.length)];
+  let cartaMostrada = "";
+  mostrarCarta();
   
-    // Mostrar la carta seleccionada en el cuadro de texto
-    const cuadroTexto = document.getElementById("cartaMostrada");
-    cuadroTexto.value = cartaSeleccionada;
+  document.getElementById("mostrarCartaBtn").addEventListener("click", () => {
+    mostrarCarta();
+  });
+  
+  function mostrarCarta() {
+    if (cartas.length > 0) {
+      const indiceCartaSeleccionada = Math.floor(Math.random() * cartas.length);
+      cartaMostrada = cartas[indiceCartaSeleccionada];
+      cartas.splice(indiceCartaSeleccionada, 1);
+  
+      const imgCartaMostrada = document.getElementById("cartaMostrada");
+      imgCartaMostrada.src = "";
+      imgCartaMostrada.src = cartaMostrada.imagen;
+      imgCartaMostrada.alt = cartaMostrada.nombre;
+
+    } else {
+      console.log("Se han mostrado todas las cartas");
+    }
+    const cartaImagen = document.getElementById('cartaMostrada');
+    const mostrarCartasBtn = document.getElementById('mostrarCartasUnaPorUnaBtn');
+    let index = 0;
+    let intervalID;
+    
+    function mostrarCarta() {
+      const carta = cartas[index];
+      cartaImagen.src = carta.imagen;
+      cartaImagen.alt = carta.nombre;
+      index = (index + 1) % cartas.length;
+      if (index === 0) {
+        clearInterval(intervalID);
+        mostrarCartasBtn.disabled = false;
+      }
+    }
+    
+    mostrarCartasBtn.addEventListener('click', () => {
+      intervalID = setInterval(() => {
+        mostrarCarta();
+      }, 200);
+      mostrarCartasBtn.disabled = true;
+    });
+
   }
