@@ -1,41 +1,56 @@
+// Establecer la versión de Solidity
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
+// Importar el contrato ChainlinkClient desde el paquete "@chainlink/contracts/src/v0.8"
 import "@chainlink/contracts/src/v0.8/ChainlinkClient.sol";
 
+// Declarar el contrato
 contract SportsEvent is ChainlinkClient {
-    uint256 public result;
-    address private oracle;
-    bytes32 private jobId;
-    uint256 private fee;
-    address public owner;
 
-    constructor() {
-        setPublicChainlinkToken();
-        oracle = 0x8AabF9e6Ee96e1Cd3F40C2dec7a6F8609e16c792; //Inserta la dirección del nodo Chainlink aquí
-        jobId = "d5d699f1f9c6495f88a0be4d825c4c4f"; //Inserta el ID del trabajo Chainlink aquí
-        fee = 0.1 * 10 ** 18; // 0.1 LINK
-        owner = msg.sender; //Inicializar el propietario en el constructor
-    }
+// Declarar variables de estado
+uint256 public result;
+address private oracle;
+bytes32 private jobId;
+uint256 private fee;
 
-    modifier onlyOwner() {
-        require(msg.sender == owner, "Only the contract owner can call this function");
-        _;
-    }
+// Constructor del contrato
+constructor(){
 
-    function requestSportsEvent() public onlyOwner {
-        Chainlink.Request memory request = buildChainlinkRequest(jobId, address(this), this.fulfillResult.selector);
-        req.add("get", "https://sofasport.p.rapidapi.com/v1/events/schedule/");
-        req.add("headers", "X-RapidAPI-Key:2393f87588msh0c8df3b6ecf540dp1cde7cjsn6a9e8302348b");
-        sendChainlinkRequestTo(oracle, request, fee);
-    }
+    // Configurar el token público de Chainlink
+    setPublicChainlinkToken();
 
-    function fulfillResult(bytes32 _requestId, uint256 _result) public recordChainlinkFulfillment(_requestId) {
-        result = _result;
-    }
+    // Configurar la dirección del nodo Oracle de Chainlink
+    oracle= "0x6090149792dAAeE9D1D568c9f9a6F6B46AA29eFD";
 
-    function withdrawLink() external onlyOwner {
-        LinkTokenInterface linkToken = LinkTokenInterface(chainlinkTokenAddress());
-        require(linkToken.transfer(msg.sender, linkToken.balanceOf(address(this))), "Unable to transfer");
-    }
+    // Configurar el ID del trabajo de Chainlink
+    jobId= "7da2702f37fd48e5b1b9a5715e3509b6";
+
+    // Configurar la tarifa del trabajo de Chainlink
+    fee=;
+
+    // Configurar cualquier otra variable de estado necesaria
+}
+
+// Función que realiza la solicitud de datos a través de Chainlink
+function requestData() public{
+
+    // Construir la solicitud de Chainlink
+    Chainlink.Request memory req = buildChainlinkRequest(jobId, address(this), this.fulfillResult.selector);
+    req.add("get", "api");
+
+    // Enviar la solicitud de Chainlink al nodo Oracle
+    sendChainlinkRequestTo(oracle, req, fee);
+}
+
+// Función que se ejecuta cuando se recibe una respuesta de Chainlink
+function fulfillResult(bytes32 _requestId, uint256 _result) public recordChainlinkFulfillment(_requestId){
+ 
+    // Almacenar el resultado en una variable de estado para su uso posterior
+    result = _result;
+
+    // Realizar cualquier otra operación necesaria con el resultado
+}
+
+
 }
