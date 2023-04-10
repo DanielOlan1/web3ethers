@@ -27,7 +27,7 @@ contract CahinLinkPlayground is ChainlinkClient, ConfirmedOwner {
             address(this),
             this.fulfill.selector
         );
-
+        console.log("HERE  1");
         // Set the URL to perform the GET request on
         req.add(
             "get",
@@ -50,6 +50,7 @@ contract CahinLinkPlayground is ChainlinkClient, ConfirmedOwner {
         // Multiply the result by 1000000000000000000 to remove decimals
         int256 timesAmount = 10 ** 18;
         req.addInt("times", timesAmount);
+        console.log("HERE  2");
 
         // Sends the request
         return sendChainlinkRequest(req, fee);

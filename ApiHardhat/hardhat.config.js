@@ -8,7 +8,8 @@ module.exports = {
   networks: {
     hardhat: {
       forking: {
-        url: ck.ARBITRUM_URL,
+        // url: ck.ARBITRUM_URL,
+        url: ck.SEPOLIA_URL,
       },
     },
     localhost: {
