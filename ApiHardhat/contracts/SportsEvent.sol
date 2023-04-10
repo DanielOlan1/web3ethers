@@ -28,7 +28,6 @@ contract SportsEvent is ChainlinkClient {
         req.add("get", "https://sofasport.p.rapidapi.com/v1/events/schedule/");
         req.add("headers", "X-RapidAPI-Key:2393f87588msh0c8df3b6ecf540dp1cde7cjsn6a9e8302348b");
         sendChainlinkRequestTo(oracle, request, fee);
-
     }
 
     function fulfillResult(bytes32 _requestId, uint256 _result) public recordChainlinkFulfillment(_requestId) {
