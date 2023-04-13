@@ -7,10 +7,6 @@ module.exports = {
 
   networks: {
     hardhat: {
-      forking: {
-        // url: ck.ARBITRUM_URL,
-        url: ck.SEPOLIA_URL,
-      },
     },
     localhost: {
       url: "http://localhost:8545",
@@ -19,7 +15,7 @@ module.exports = {
       },
     },
     arbitrum: {
-      url: ck.ARBITRUM_URL,
+      url: "https://arb1.arbitrum.io/rpc",
       chainId: 42161,
       accounts: [
         "9dc8c652a16755e58fe2ffae9991c895174f3746022b2a474f8d89694b4dc312",
