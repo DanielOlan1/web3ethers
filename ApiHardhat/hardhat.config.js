@@ -23,12 +23,14 @@ module.exports = {
     },
   },
   solidity: {
-    version: "0.8.9",
-    settings: {
-      optimizer: {
-        enabled: true,
-        runs: 200,
+    compilers: [
+      {
+        version: "0.8.9", // versión deseada del compilador de Solidity
+      },  {
+        version: "0.6.0", // versión deseada del compilador de Solidity
       },
-    },
-  },
+    
+    ],
+
+  }
 };
