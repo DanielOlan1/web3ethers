@@ -79,7 +79,7 @@ contract CahinLinkPlayground is ChainlinkClient, ConfirmedOwner {
         );
     }
 
-    function testFunction() public returns (address) {
+    function testFunction() public view returns (address) {
         console.log("TEST FUNCTION");
 
         return address(0);
